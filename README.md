@@ -75,6 +75,7 @@ Once in Agile PM Mode, use any of these commands:
 | `/generate-backlog [desc]` | Product backlog | PRODUCT_BACKLOG.md |
 | `/generate-roadmap [desc]` | Timeline & milestones | ROADMAP.md |
 | `/generate-retrospective [sprint]` | Sprint retrospective | SPRINT_RETROSPECTIVE.md |
+| `/generate-specs [desc]` | Technical specs | ARCHITECTURE.md, API_SPEC.md, DATABASE_SCHEMA.md |
 | `/generate-all [desc]` | All 8 artifacts | All above + additional
 
 ### Generated Artifacts
