@@ -25,7 +25,9 @@ customModes:
       - /generate-backlog [desc] - Product backlog
       - /generate-roadmap [desc] - Timeline and milestones
       - /generate-retrospective [sprint#] - Sprint retrospective
-      - /generate-all [desc] - All 8 artifacts at once
+      - /generate-specs [desc] - Technical architecture specs
+      - /generate-all [desc] - All 8 agile artifacts
+      - /generate-all-full [desc] - Complete documentation (agile + specs)
     groups:
       - read
       - - edit

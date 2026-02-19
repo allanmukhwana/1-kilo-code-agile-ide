@@ -7,8 +7,8 @@ A Kilo Code custom mode for Agile project management. This mode helps teams brea
 - **Evidence-Based Analysis**: Analyzes your actual codebase to ground agile artifacts in reality
 - **Repo-Aware**: Reads your code structure to understand functionality before generating artifacts
 - **Execution-Optimized**: Focuses on deliverable user stories with verifiable acceptance criteria
-- **8-Artifact Pipeline**: Generates Personas, Journeys, Epics, Stories, Criteria, Sprints, Backlog, and Roadmap
-- **5 Custom Commands**: Flexible commands for different agile planning needs
+- **7-Command Suite**: Multiple commands for flexible project planning
+- **Technical Specs**: Generates architecture diagrams and API documentation
 
 ## Installation
 
@@ -57,8 +57,14 @@ Once in Agile PM Mode, use any of these commands:
 # 4. Generate sprint retrospective
 /generate-retrospective 1
 
-# 5. Generate all artifacts at once
-generate-all Build a comprehensive project plan for a new SaaS platform
+# 5. Generate technical architecture specs
+/generate-specs Design the system architecture for a SaaS platform
+
+# 6. Generate all agile artifacts
+/generate-all Build a comprehensive project plan
+
+# 7. Generate everything (agile + technical)
+/generate-all-full Complete documentation for new platform
 ```
 
 **All Commands:**
@@ -86,6 +92,10 @@ The mode generates these Markdown files in your project root:
 | `PRODUCT_BACKLOG.md` | Prioritized feature list with story points |
 | `ROADMAP.md` | Timeline and milestones |
 | `SPRINT_RETROSPECTIVE.md` | Sprint retrospective template |
+| `ARCHITECTURE.md` | System architecture overview |
+| `API_SPEC.md` | REST API specifications |
+| `DATABASE_SCHEMA.md` | Database schema documentation |
+| `COMPONENT_DIAGRAM.md` | Component diagram descriptions |
 
 ## Configuration
 
@@ -144,7 +154,9 @@ Epics → User Stories → Acceptance Criteria → Sprints → Backlog → Roadm
 2. `/generate-backlog` - Refine and prioritize backlog
 3. `/generate-roadmap` - Create timeline
 4. `/generate-retrospective` - Sprint review (run after each sprint)
-5. `/generate-all` - Complete set at once
+5. `/generate-specs` - Technical architecture documentation
+6. `/generate-all` - Complete agile set
+7. `/generate-all-full` - Everything (agile + technical)
 
 ## For Developers
 
