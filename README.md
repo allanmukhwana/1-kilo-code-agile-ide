@@ -7,7 +7,8 @@ A Kilo Code custom mode for Agile project management. This mode helps teams brea
 - **Evidence-Based Analysis**: Analyzes your actual codebase to ground agile artifacts in reality
 - **Repo-Aware**: Reads your code structure to understand functionality before generating artifacts
 - **Execution-Optimized**: Focuses on deliverable user stories with verifiable acceptance criteria
-- **6-Artifact Pipeline**: Generates User Personas, User Journeys, Epics, User Stories, Acceptance Criteria, and Sprints
+- **8-Artifact Pipeline**: Generates Personas, Journeys, Epics, Stories, Criteria, Sprints, Backlog, and Roadmap
+- **5 Custom Commands**: Flexible commands for different agile planning needs
 
 ## Installation
 
@@ -39,23 +40,36 @@ A Kilo Code custom mode for Agile project management. This mode helps teams brea
 2. Switch to "Agile PM Mode" using the mode switcher
 3. The mode will analyze your repository structure
 
-### Using the Custom Command
+### Using the Custom Commands
 
-Once in Agile PM Mode, use the `/agile-plan` command:
-
-```
-/agile-plan [project-description]
-```
-
-**Examples:**
+Once in Agile PM Mode, use any of these commands:
 
 ```bash
-# For a new project
+# 1. Generate core agile artifacts (recommended for new projects)
 /agile-plan A task management app with user authentication, project boards, and real-time collaboration
 
-# For an existing project (mode will analyze code first)
-/agile-plan Enhance the existing e-commerce platform with payment integration
+# 2. Generate product backlog
+/generate-backlog Create a backlog for the e-commerce platform
+
+# 3. Generate roadmap
+/generate-roadmap Plan the roadmap for mobile app expansion
+
+# 4. Generate sprint retrospective
+/generate-retrospective 1
+
+# 5. Generate all artifacts at once
+generate-all Build a comprehensive project plan for a new SaaS platform
 ```
+
+**All Commands:**
+
+| Command | Description | Output |
+|---------|-------------|--------|
+| `/agile-plan [desc]` | Core 6 artifacts | USER_PERSONAS.md, USER_JOURNEYS.md, EPICS.md, USER_STORIES.md, ACCEPTANCE_CRITERIA.md, SPRINTS.md |
+| `/generate-backlog [desc]` | Product backlog | PRODUCT_BACKLOG.md |
+| `/generate-roadmap [desc]` | Timeline & milestones | ROADMAP.md |
+| `/generate-retrospective [sprint]` | Sprint retrospective | SPRINT_RETROSPECTIVE.md |
+| `/generate-all [desc]` | All 8 artifacts | All above + additional
 
 ### Generated Artifacts
 
@@ -69,6 +83,9 @@ The mode generates these Markdown files in your project root:
 | `USER_STORIES.md` | Actionable stories with clear value propositions |
 | `ACCEPTANCE_CRITERIA.md` | Verifiable success conditions from code behavior |
 | `SPRINTS.md` | Time-boxed iterations with shippable goals |
+| `PRODUCT_BACKLOG.md` | Prioritized feature list with story points |
+| `ROADMAP.md` | Timeline and milestones |
+| `SPRINT_RETROSPECTIVE.md` | Sprint retrospective template |
 
 ## Configuration
 
@@ -118,8 +135,16 @@ groups:
 
 ```
 Project Description → Code Analysis → User Personas → User Journeys → 
-Epics → User Stories → Acceptance Criteria → Sprints
+Epics → User Stories → Acceptance Criteria → Sprints → Backlog → Roadmap
 ```
+
+**Command Flow:**
+
+1. `/agile-plan` - Core 6 artifacts for initial planning
+2. `/generate-backlog` - Refine and prioritize backlog
+3. `/generate-roadmap` - Create timeline
+4. `/generate-retrospective` - Sprint review (run after each sprint)
+5. `/generate-all` - Complete set at once
 
 ## For Developers
 

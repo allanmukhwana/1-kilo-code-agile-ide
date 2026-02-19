@@ -19,6 +19,13 @@ customModes:
       Use this mode when starting a new project, onboarding to an existing codebase, or planning agile work.
       This mode excels at creating actionable agile artifacts that connect directly to code implementation.
       Best for: sprint planning, backlog refinement, feature breakdown, and team alignment.
+      
+      Available commands:
+      - /agile-plan [desc] - Core 6 artifacts
+      - /generate-backlog [desc] - Product backlog
+      - /generate-roadmap [desc] - Timeline and milestones
+      - /generate-retrospective [sprint#] - Sprint retrospective
+      - /generate-all [desc] - All 8 artifacts at once
     groups:
       - read
       - - edit
@@ -26,21 +33,41 @@ customModes:
           description: Markdown files only
       - command
     customInstructions: >-
-      CUSTOM COMMAND: /agile-plan [project-description]
+      AVAILABLE COMMANDS:
       
-      When user invokes /agile-plan with a project description, execute the following workflow:
-      1. Parse the project description to understand the project goals and requirements
-      2. If the repo has existing code, analyze the codebase structure first (read package.json, README, main source files)
-      3. Generate all artifacts based on the project description and/or existing code
+      1. /agile-plan [project-description]
+         - Generates 6 core artifacts: USER_PERSONAS, USER_JOURNEYS, EPICS, USER_STORIES, ACCEPTANCE_CRITERIA, SPRINTS
+         - Use when starting a new project or planning major work
       
-      ARTIFACT GENERATION (execute in order):
-      1. Analyze the repository structure, readme, package.json, and main source files to understand the project
-      2. Generate USER_PERSONAS.md - identify distinct user types from authentication, roles, and feature usage patterns in code
-      3. Generate USER_JOURNEYS.md - map critical user paths from UI routes, API endpoints, and user interactions
-      4. Generate EPICS.md - group related features into major themes based on module boundaries and dependencies
-      5. Generate USER_STORIES.md - break down epics into smaller, testable stories with clear value propositions
-      6. Generate ACCEPTANCE_CRITERIA.md - define success conditions from code contracts, validation logic, and expected behaviors
-      7. Generate SPRINTS.md - organize stories into time-boxed iterations with clear goals and deliverables
+      2. /generate-backlog [project-description]
+         - Generates PRODUCT_BACKLOG.md with prioritized feature list
+         - Use when creating or refining the product backlog
+      
+      3. /generate-roadmap [project-description]
+         - Generates ROADMAP.md with timeline and milestones
+         - Use when planning long-term product direction
+      
+      4. /generate-retrospective [sprint-number]
+         - Generates SPRINT_RETROSPECTIVE.md for a specific sprint
+         - Use at the end of each sprint for continuous improvement
+      
+      5. /generate-all [project-description]
+         - Generates ALL agile artifacts at once (recommended)
+         - Includes: Personas, Journeys, Epics, Stories, Criteria, Sprints, Backlog, Roadmap
+         
+      6. /generate-specs [project-description]
+         - Generates technical architecture documentation
+         - Creates: ARCHITECTURE.md, API_SPEC.md, DATABASE_SCHEMA.md, COMPONENT Diagram.md
+         - Use when planning technical implementation
+      
+      7. /generate-all-full [project-description]
+         - Generates EVERYTHING: agile artifacts + technical specs
+         - Complete project documentation package
+      
+      WORKFLOW:
+      1. Parse the project description to understand goals and requirements
+      2. If repo has existing code, analyze codebase structure first
+      3. Execute the appropriate command to generate artifacts
       
       EVIDENCE-BASED APPROACH:
       - Read actual code files to understand functionality (if available)
