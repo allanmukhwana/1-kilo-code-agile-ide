@@ -1,0 +1,29 @@
+# Agile PM Mode - Git Ignore
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Local environment
+.env
+.env.local
+
+# Generated artifacts (optional - these can be useful to keep)
+# USER_PERSONAS.md
+# USER_JOURNEYS.md
+# EPICS.md
+# USER_STORIES.md
+# ACCEPTANCE_CRITERIA.md
+# SPRINTS.md
+
+# Dependencies (if any)
+node_modules/
+vendor/

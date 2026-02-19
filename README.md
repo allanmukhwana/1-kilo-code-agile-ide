@@ -1,0 +1,179 @@
+# Kilo Code Agile PM Mode
+
+A Kilo Code custom mode for Agile project management. This mode helps teams break down projects into actionable agile artifacts that connect directly to code implementation.
+
+## Features
+
+- **Evidence-Based Analysis**: Analyzes your actual codebase to ground agile artifacts in reality
+- **Repo-Aware**: Reads your code structure to understand functionality before generating artifacts
+- **Execution-Optimized**: Focuses on deliverable user stories with verifiable acceptance criteria
+- **6-Artifact Pipeline**: Generates User Personas, User Journeys, Epics, User Stories, Acceptance Criteria, and Sprints
+
+## Installation
+
+### Option 1: Per-Project (Recommended)
+
+1. Copy the `.kilocodemodes` file to your project root:
+   ```bash
+   cp .kilocodemodes /path/to/your/project/
+   ```
+
+2. The mode will be automatically detected when you open the project in Kilo Code
+
+### Option 2: Global Installation
+
+1. Copy to your global Kilo Code settings:
+   ```bash
+   # Windows
+   copy .kilocodemodes %APPDATA%\Code\User\globalStorage\kilocode.kilo-code\settings\custom_modes.yaml
+   
+   # macOS/Linux
+   cp .kilocodemodes ~/.config/Code/User/globalStorage/kilocode.kilo-code/settings/custom_modes.yaml
+   ```
+
+## Usage
+
+### Starting the Mode
+
+1. Open your project in Kilo Code
+2. Switch to "Agile PM Mode" using the mode switcher
+3. The mode will analyze your repository structure
+
+### Using the Custom Command
+
+Once in Agile PM Mode, use the `/agile-plan` command:
+
+```
+/agile-plan [project-description]
+```
+
+**Examples:**
+
+```bash
+# For a new project
+/agile-plan A task management app with user authentication, project boards, and real-time collaboration
+
+# For an existing project (mode will analyze code first)
+/agile-plan Enhance the existing e-commerce platform with payment integration
+```
+
+### Generated Artifacts
+
+The mode generates these Markdown files in your project root:
+
+| File | Description |
+|------|-------------|
+| `USER_PERSONAS.md` | Distinct user types identified from code patterns |
+| `USER_JOURNEYS.md` | Critical user paths mapped from routes/APIs |
+| `EPICS.md` | Feature themes grouped by module boundaries |
+| `USER_STORIES.md` | Actionable stories with clear value propositions |
+| `ACCEPTANCE_CRITERIA.md` | Verifiable success conditions from code behavior |
+| `SPRINTS.md` | Time-boxed iterations with shippable goals |
+
+## Configuration
+
+### Mode Settings
+
+The `.kilocodemodes` file contains:
+
+```yaml
+customModes:
+  - slug: agile-pm
+    name: Agile PM Mode
+    groups:
+      - read           # Read any file
+      - - edit         # Edit only
+        - fileRegex: \.md$  # Markdown files
+      - command        # Execute commands
+```
+
+### Customizing Tool Access
+
+If you need to adjust tool permissions, modify the `groups` array:
+
+```yaml
+groups:
+  - read               # Enable file reading
+  - - edit             # Enable editing
+    - fileRegex: \.md$ # Restrict to markdown
+    - fileRegex: \.yaml$ # Also allow YAML
+  - command            # Enable CLI commands
+```
+
+## How It Works
+
+### Evidence-Based Approach
+
+1. **Code Analysis**: Reads actual source files to understand functionality
+2. **Pattern Detection**: Identifies API routes, UI components, database schemas
+3. **Artifact Generation**: Creates agile artifacts grounded in real code
+
+### Execution-Focused Output
+
+- Each user story has a clear "then" (deliverable)
+- Acceptance criteria are verifiable through testing
+- Sprints have concrete goals resulting in shippable increments
+
+### Artifact Pipeline
+
+```
+Project Description → Code Analysis → User Personas → User Journeys → 
+Epics → User Stories → Acceptance Criteria → Sprints
+```
+
+## For Developers
+
+### Forking This Mode
+
+1. Clone this repository
+2. Modify `.kilocodemodes` with your customizations
+3. Test locally in your project
+
+### Adding Custom Artifacts
+
+To add new artifacts, edit the `customInstructions` section in `.kilocodemodes`:
+
+```yaml
+customInstructions: >-
+  ADD YOUR CUSTOM ARTIFACT HERE:
+  - Generate CUSTOM_ARTIFACT.md based on...
+```
+
+### Creating New Modes
+
+This project demonstrates the mode creation pattern. To create your own:
+
+1. Add a new entry to `customModes` array
+2. Define `slug`, `name`, `roleDefinition`
+3. Configure `groups` for tool access
+4. Add `customInstructions` for behavior
+
+See [Kilo Code Mode Documentation](https://github.com/kilo-code/docs) for full schema.
+
+## Project Structure
+
+```
+.
+├── .kilocodemodes       # Mode configuration (copy to your project)
+├── README.md            # This file
+├── LICENSE              # MIT License
+└── CONTRIBUTING.md      # Contribution guidelines
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting PRs.
+
+## Support
+
+- **Issues**: Report bugs or request features via GitHub Issues
+- **Discussions**: Ask questions and share feedback
+
+## Acknowledgments
+
+- Kilo Code for the extensible mode system
+- Agile methodology practitioners for best practices
